@@ -1,0 +1,47 @@
+
+.main-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #000000;
+}
+
+.header-navigation {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    left: 83%;
+    top: 16px;
+}
+
+.btn-navigation-l {
+    background: transparent;
+    width: 69px;
+    height: 22px;
+    margin-right: 23px;
+    
+}
+
+.btn-navigation-r {
+    background: transparent;
+    height: min-content;
+    width: 72px;
+    height: 22px;
+}
+
+.txt-navigation {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+    border: 0.5px solid #000000;
+    margin: 0;
+}
+
+
