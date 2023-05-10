@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.css';
 import {Link} from "react-router-dom";
+import '../../assets/Inter-SemiBold.otf';
 
 const Login = (props) => {
   return (
@@ -11,9 +12,11 @@ const Login = (props) => {
         <input className='inp_login' placeholder="электронная почта"/>
         <input className='inp_login' placeholder="пароль" />
         <div className="navigation">
-            <button className='btn_login' style={{marginRight: 165}}>
-                <p className='login_text'> войти </p>
-            </button>
+            <Link to='/'>
+                <button className='btn_login' style={{marginRight: 165}}>
+                    <p className='login_text'> войти </p>
+                </button>
+            </Link>
             <p className='login_text' style={{color: "red", marginRight: 5}}> или Вам нужна </p>
             <Link to='/registration'>
                 <button className='btn_login'> 
