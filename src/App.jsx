@@ -1,12 +1,14 @@
-import './App.css';
+import React from 'react';
+import {Route, Routes} from "react-router-dom";
 import Main from './screens/main/main';
+import Login from './screens/login/login';
 
-
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <Main/>
-    </div>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
