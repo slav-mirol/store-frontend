@@ -1,8 +1,9 @@
 import React from 'react';
-import Logo from './logo';
 import {Link} from "react-router-dom";
 import './main.css';
+import Logo from './logo';
 import ProductCard from '../../components/product-card/product-card';
+import Products from '../../components/array-products';
 
 const Main = () => {
     return (
@@ -27,31 +28,19 @@ const Main = () => {
           </header>
           <p className='text-header-main'> store </p>
           <div className='list-products-white'>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=1o1WkjkAyMFKyzYKt9cY6UrGz5j-xzlGU'
-                         name='t-shirt sunboy'
-                         price='$20'
+            <ProductCard prod={Products[0]}
                          bw='1'/>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=1qvC58zQS1JolMnlJQXavaXSAr07q4DxV'
-                         name='t-shirt man of good fortune'
-                         price='$25'
+            <ProductCard prod={Products[1]}
                          bw='1'/>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=1-PUV9dbkM01z8oECWFnIc_SO_sy9LS2z'
-                         name='t-shirt 00000000'
-                         price='$30'
+            <ProductCard prod={Products[2]}
                          bw='1'/>
           </div>
           <div className='list-products-black'>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=1M0EGAiIRI7_cm_E2LrI32cIKAo3pd1GC'
-                         name='t-shirt mockup 2'
-                         price='$25'
+            <ProductCard prod={Products[3]}
                          bw='0'/>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=12NMcTUOl5yC176R9rnx1SoTSkbTg9-RY'
-                         name='bomber jacket pretentious punk'
-                         price='$199'
+            <ProductCard prod={Products[4]}
                          bw='0'/>
-            <ProductCard image='http://drive.google.com/uc?export=view&id=1Rw6aGUE_mSbeXP39WYc8pBghlD5bsnCh'
-                         name='down jacket l’imbécile'
-                         price='$149'
+            <ProductCard prod={Products[5]}
                          bw='0'/>
           </div>
       </div>
