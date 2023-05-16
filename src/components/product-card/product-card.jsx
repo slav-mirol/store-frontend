@@ -5,13 +5,53 @@ import '../../assets/Inter-SemiBold.otf';
 import Products from '../array-products';
 import Product from '../../screens/product/product';
 
-const ProductCard = ({
+class ProductCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            prod: {},
+            bw: '0',
+
+        }
+    }
+  render() {
+        return (
+        <div>
+        <Link to={{pathname: `/product`, state: {product: this.props.prod}}}>
+            <div className='btn-product-card' style={{border:"none"}}>
+                <div className='img-container'>
+                    <img className='img-product-card' src={this.props.prod.image}/>
+                </div>
+                <div>
+                    {this.props.bw==='1' ?
+                    <div className='info-product-card'>
+                        <p className='text-info-card' style={{color:'black'}}>{this.props.prod.name}</p>
+                        <p className='text-info-card' style={{color:'black'}}>{this.props.prod.price}</p>
+                    </div>
+                    :
+                    <div className='info-product-card'>
+                        <p className='text-info-card'>{this.props.prod.name}</p>
+                        <p className='text-info-card'>{this.props.prod.price}</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </Link>
+        </div>
+        )
+    }
+}
+
+
+
+
+const ProductCard1 = ({
     prod,
     bw,
 }) => {
   return (
     <div>
-    <Link to={{pathname: `/product/${prod.id}`, state: {product: prod}}}>
+    <Link to={{pathname: `/product`, state: {product: prod}}}>
         <div className='btn-product-card' style={{border:"none"}}>
             <div className='img-container'>
                 <img className='img-product-card' src={prod.image}/>

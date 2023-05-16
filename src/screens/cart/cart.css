@@ -1,0 +1,33 @@
+.scr-cart {
+    margin-top: 70px;
+    margin-left: 150px;
+}
+
+.cart-table {
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.head-table { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title-table {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.line-table {
+    width: 700px;
+    border: 1px solid rgba(94, 94, 94, 1)
+}

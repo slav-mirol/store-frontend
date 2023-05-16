@@ -4,27 +4,14 @@ import './main.css';
 import Logo from './logo';
 import ProductCard from '../../components/product-card/product-card';
 import Products from '../../components/array-products';
+import Navigation from '../../components/navigation/navigation';
 
 const Main = () => {
     return (
       <div className="scr_main">
           <header className='main-header'>
             <Logo />
-            <div className='header-navigation'>
-              <Link to='/login'>
-                <button className='btn-navigation-l'>
-                  <p className='txt-navigation'>
-                    аккаунт
-                  </p>
-                </button>
-              </Link>
-              <button className='btn-navigation-r'>
-                <p className='txt-navigation'>
-                  корзина
-                </p>
-              </button>
-            </div>
-            
+            <Navigation/>
           </header>
           <p className='text-header-main'> store </p>
           <div className='list-products-white'>
