@@ -1,0 +1,37 @@
+.profile-navigation {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 83%;
+    top: 16px;
+}
+
+.btn-navigation-u {
+    background: transparent;
+    width: 98px;
+    height: 15px;
+    margin-left: 23px;
+    border: none;
+}
+
+.btn-navigation-d {
+    background: transparent;
+    height: min-content;
+    width: 100px;
+    height: 15px;
+    border: none;
+}
+
+.txt-navigation {
+    font-family: 'Inter';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+    text-shadow: 3px 3px 3px #000; 
+    margin: 0;
+}
