@@ -6,6 +6,7 @@ import Products from '../../components/array-products';
 import CartProduct from '../../components/cart-product/cart-product';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import ProfileNavigation from '../../components/profile-navigation/profile-navigation';
 
 const Cart = (props) => {
     const [total, setTotal] = useState(Products[0].price*2+Products[1].price*3);
@@ -13,6 +14,7 @@ const Cart = (props) => {
     <div className="scr-cart">
         <Logo/>
         <Navigation />
+        <ProfileNavigation  where='cart'/>
         <p className='prom-text'> new arrivals </p>
         <p className='prom-text'> collection </p>
         <div style={{display: "flex", justifyContent: "center"}}>
