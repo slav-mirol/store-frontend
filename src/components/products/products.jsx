@@ -38,7 +38,7 @@ const ProductsList = (props) => {
 
       fetchData();
     }, []);
-    console.log(Products);
+
     return (
         <div className='list-products-black'>
           { Products.map((elem)=>(
