@@ -5,6 +5,7 @@ import Logo from './logo';
 import ProductCard from '../../components/product-card/product-card';
 import Products from '../../components/array-products';
 import Navigation from '../../components/navigation/navigation';
+import ProductsList from '../../components/products/products';
 
 const Main = () => {
     return (
@@ -14,6 +15,8 @@ const Main = () => {
             <Navigation/>
           </header>
           <p className='text-header-main'> store </p>
+          <ProductsList/>
+          
           <div className='list-products-white'>
             <ProductCard prod={Products[0]}
                          bw='1'/>
@@ -30,6 +33,8 @@ const Main = () => {
             <ProductCard prod={Products[5]}
                          bw='0'/>
           </div>
+
+
       </div>
     );
 }

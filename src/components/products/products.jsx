@@ -1,40 +1,51 @@
 import React from 'react';
+import { useState,useEffect } from 'react';
+import ProductCard from '../product-card/product-card';
 
+import axios from 'axios';
 
-function fetchProducts() {
-    return fetch(`http://127.0.0.1:8000/get-products`)
-      .then((res) => res.json())
-      .catch(() => alert("Error in fetch!"));
+const url = axios.create({
+    baseURL: 'http://127.0.0.1:8000/',
+});
+
+const config = {
+    headers: {
+      "Content-Type": "application/json",
+    }
   }
+
+const getAllProducts = () => {
+    let result = url
+        .get("get-products?format=json")
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return result;
+};
+
+
   
 const ProductsList = (props) => {
-  
-      //const [value,setValue] = useState('');  
-      //const {debounceValue} = useDebounce(value,500)
+    const [Products, setProducts] = useState([]);
     useEffect(()=>{
-      fetchFilms(value).then((res)=>setFilms(res));
-    },[]);
-  
+      async function fetchData() {
+        const response = await getAllProducts();
+        setProducts(response);
+      }
+
+      fetchData();
+    }, []);
+    console.log(Products);
     return (
-      <div className="products-list">
-        <div className="search">
-          <input
-            className="input-search"
-            id="input-search"
-            placeholder="Введите название фильма"
-            onChange={(e) => setValue(e.target.value)}
-          />
-        </div>
-        <div className="movies">
-          {movies.length ?
-            movies.map((elem) => (
-              <MovieCard key={elem.id} movie={elem} showMovie={showMovie} />
-            ))
-          :
-            null
+        <div className='list-products-black'>
+          { Products.map((elem)=>(
+            <ProductCard key={elem.id} prod={elem} bw='0' />
+          ))
           }
         </div>
-      </div>
     );
 };
 
