@@ -28,9 +28,10 @@ const getAllProducts = () => {
 
 
   
-const ProductsList = (props) => {
+const ProductsList = ({user}) => {
     const [Products, setProducts] = useState([]);
-    useEffect(()=>{
+    
+    useEffect(() => {
       async function fetchData() {
         const response = await getAllProducts();
         setProducts(response);
@@ -39,10 +40,11 @@ const ProductsList = (props) => {
       fetchData();
     }, []);
 
+
     return (
         <div className='list-products-black'>
           { Products.map((elem)=>(
-            <ProductCard key={elem.id} prod={elem} bw='0' />
+            <ProductCard key={elem.id} prod={elem} bw='0' user={user} />
           ))
           }
         </div>

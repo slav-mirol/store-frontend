@@ -15,13 +15,15 @@ const prof = {
 }
 
 const Profile = ({
-    _profile
+    _profile,
+    setUser
 }) => {
     const [isEdit, setEdit] = useState(false);
     const [profile, setProfile] = useState({});
     useEffect(()=>{
         setProfile(prof);
     },[])
+    console.log(_profile);
     return (
         <div className="scr-profile">
             <Logo/>
@@ -34,7 +36,7 @@ const Profile = ({
                     <PropsOfProfile
                         titleParam='Имя'
                         inpPlaceholder="Введите имя"
-                        inpValue={profile.fname}
+                        inpValue={_profile.first_name}
                         parametr='fname'
                         setFormState={setProfile}
                     />
@@ -44,8 +46,8 @@ const Profile = ({
                 </div>
             :
                 <div className="profile-info">
-                    <p className="profile-info-text">Имя: {profile.fname}</p>
-                    <p className="profile-info-text">Фамилия: {profile.lname}</p>
+                    <p className="profile-info-text">Имя: {_profile["first_name"]}</p>
+                    <p className="profile-info-text">Фамилия: {_profile["last_name"]}</p>
                     <p className="profile-info-text">Адрес: {profile.adress}</p>
                     <p className="profile-info-text">Номер: {profile.number}</p>
                     <button className="profile-btn-edit" onClick={()=>{setEdit(true);}}>

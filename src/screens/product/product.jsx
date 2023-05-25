@@ -4,15 +4,16 @@ import Logo from '../../components/logo1';
 import {Link} from "react-router-dom";
 import Products from '../../components/array-products';
 import Navigation from '../../components/navigation/navigation';
+import ProfileNavigation from '../../components/profile-navigation/profile-navigation';
 
 class Product extends React.Component {
   //const product = Products[id-1];
 render() {
-  console.log(this.props);
   return (
       <div className='product'>
           <Logo />
-          <Navigation/>
+          <Navigation user={this.props.location.state.user}/>
+          {(this.props.location.state.user) && <ProfileNavigation where="product"/>}
           <p className='prom-text'> new arrivals </p>
           <p className='prom-text'> collection </p>
           <div className='product-info'>
@@ -24,11 +25,12 @@ render() {
                       <p className='text-info-card'>{this.props.location.state.product.name}</p>
                       <p className='text-info-card'>{this.props.location.state.product.description}</p>
                       <p className='text-info-card'>{this.props.location.state.product.price}</p>
-                      <button className='btn-add-cart'>
+                      {(this.props.location.state.user) && <button className='btn-add-cart'>
                         <p className='btn-text-add-cart'>
                           add to cart
                         </p>
                       </button>
+                      }
                   </div>
               </div>
               

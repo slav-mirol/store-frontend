@@ -11,13 +11,14 @@ class ProductCard extends React.Component {
         this.state = {
             prod: {},
             bw: '0',
+            user: {}
 
         }
     }
   render() {
         return (
         <div>
-        <Link to={{pathname: `/product`, state: {product: this.props.prod}}}>
+        <Link to={{pathname: `/product`, state: {product: this.props.prod, user: this.props.user}}}>
             <div className='btn-product-card' style={{border:"none"}}>
                 <div className='img-container'>
                     <img className='img-product-card' src={this.props.prod.image}/>

@@ -15,28 +15,27 @@ const config = {
     }
   }
 
-
-
-const Login = (props) => {
+const Login = ({user, setUser}) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState({});
+
     async function auth() {
-         const result = await url
-             .post("/user/auth", JSON.stringify({
-                 "email": email,
-                 "password": password
-             }), config)
-             .then((response) => {
-                 return response.data;
-             })
-             .catch((error) => {
-                 return error;
-             });
+        const result = await url
+            .post("/user/auth", JSON.stringify({
+                "email": email,
+                "password": password
+            }), config)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
 
         setUser(result['user_info']);
-      }
+    }
+    
   return (
     <div className="scr_login">
         <p className='title_login'>

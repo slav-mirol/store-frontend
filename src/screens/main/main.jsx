@@ -7,15 +7,15 @@ import Products from '../../components/array-products';
 import Navigation from '../../components/navigation/navigation';
 import ProductsList from '../../components/products/products';
 
-const Main = () => {
+const Main = ({user}) => {
     return (
       <div className="scr_main">
           <header className='main-header'>
             <Logo />
-            <Navigation/>
+            <Navigation user={user}/>
           </header>
           <p className='text-header-main'> store </p>
-          <ProductsList/>
+          <ProductsList user={user}/>
           
           <div className='list-products-white'>
             <ProductCard prod={Products[0]}
