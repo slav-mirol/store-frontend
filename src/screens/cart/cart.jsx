@@ -2,15 +2,16 @@ import React from 'react';
 import './cart.css';
 import Navigation from '../../components/navigation/navigation';
 import Logo from '../../components/logo1';
-import Products from '../../components/array-products';
-import CartProduct from '../../components/cart-product/cart-product';
+import CartProducts from '../../components/cart-products/cart-products';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ProfileNavigation from '../../components/profile-navigation/profile-navigation';
 
-const Cart = ({user}) => {
-    const [total, setTotal] = useState(Products[0].price*2+Products[1].price*3);
 
+
+const Cart = ({user}) => {
+  const [total, setTotal] = useState(0);
+    
   return (
     <div className="scr-cart">
         <Logo/>
@@ -27,8 +28,7 @@ const Cart = ({user}) => {
                     <p className='title-table' style={{marginRight:40}}> TOTAL </p>
                 </div>
                 <div className='line-table'/>
-                <CartProduct product={Products[0]} quantity={2} setTotal={setTotal} total={total}/>
-                <CartProduct product={Products[1]} quantity={3} setTotal={setTotal} total={total}/>
+                <CartProducts setTotal={setTotal} total={total} user={user}/>
                 <div className='line-table'/>
                 <div className='total-info'>
                     <div className='total-info-text'>
@@ -44,10 +44,7 @@ const Cart = ({user}) => {
                         </button>
                     </div>
                 </div>
-                
-                
             </div>
-            
         </div>
     </div>
   );

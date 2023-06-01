@@ -12,6 +12,7 @@ const CartProduct = ({
     useEffect(() => {
         setCount(quantity);
       }, []);
+      console.log(product);
     return (
         <div className="cart-product">
             <div style={{display:"flex", flexDirection:"row"}}>

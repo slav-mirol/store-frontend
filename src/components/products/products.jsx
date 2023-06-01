@@ -26,8 +26,6 @@ const getAllProducts = () => {
     return result;
 };
 
-
-  
 const ProductsList = ({user}) => {
     const [Products, setProducts] = useState([]);
     
@@ -40,7 +38,7 @@ const ProductsList = ({user}) => {
       fetchData();
     }, []);
 
-
+    console.log(Products);
     return (
         <div className='list-products-black'>
           { Products.map((elem)=>(
