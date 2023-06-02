@@ -6,9 +6,54 @@ import Products from '../../components/array-products';
 import Navigation from '../../components/navigation/navigation';
 import ProfileNavigation from '../../components/profile-navigation/profile-navigation';
 
+import axios from 'axios';
+
+const url = axios.create({
+    baseURL: 'http://127.0.0.1:8000/',
+});
+
+const config = {
+    headers: {
+      "Content-Type": "application/json",
+    }
+}
+
+const createCartStr = async (user, product) =>  {
+  let result =  await url
+      .post("orders/create-cart", JSON.stringify({"id_user": user["id"], "id_product": product["id"]}),config)
+      .then((response) => {
+          return response.data;
+      })
+      .catch((error) => {
+          return error;
+      });
+  return result;
+};
+
+const getProductsCart = async (user) =>  {
+    let result =  await url
+        .post("cart/get-cart?format=json", JSON.stringify({"id_user": user["id"]}),config)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return result;
+};
+
 class Product extends React.Component {
-  //const product = Products[id-1];
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...props,
+      added : false
+    }
+  }
+  
 render() {
+  
+  console.log(this.state);
   return (
       <div className='product'>
           <Logo />
@@ -25,12 +70,18 @@ render() {
                       <p className='text-info-card'>{this.props.location.state.product.name}</p>
                       <p className='text-info-card'>{this.props.location.state.product.description}</p>
                       <p className='text-info-card'>{this.props.location.state.product.price}</p>
-                      {(this.props.location.state.user) && <button className='btn-add-cart'>
+                      {(this.props.location.state.user) && <button className='btn-add-cart' onClick={
+                        ()=>{
+                          createCartStr(this.props.location.state.user, this.props.location.state.product);
+                          this.setState({...this.props, added: true})
+                        }
+                        }>
                         <p className='btn-text-add-cart'>
                           add to cart
                         </p>
                       </button>
                       }
+                      {(this.state.added === true) && <p style={{color:"white"}}>Вы добавили этот товар в корзину</p>}
                   </div>
               </div>
               

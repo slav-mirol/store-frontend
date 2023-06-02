@@ -12,24 +12,27 @@ const CartProduct = ({
     useEffect(() => {
         setCount(quantity);
       }, []);
-      console.log(product);
+      console.log(total);
     return (
         <div className="cart-product">
             <div style={{display:"flex", flexDirection:"row"}}>
                 <div className="cart-img-container">
                     <img className="cart-img" src={product.image}/>
                 </div>
-                <p className="cart-text"  style={{width:67}}>{product.name}</p>
+                <p className="cart-text"  style={{marginLeft:10,width:67}}>{product.name}</p>
             </div>
             <div className="cart-info">
                 
-                <p className="cart-text" style={{marginLeft:50}} >${product.price}</p>
+                <p className="cart-text"  >${product.price}</p>
                 <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
-                    <button className="btn-table" style={{marginLeft:165}} onClick={
+                    <button className="btn-table" onClick={
                         () => {
                             if(count>1) {
                                 setCount(count - 1);
-                                setTotal(total - product.price);
+                                var a = Number(total).toFixed(2);
+                                var b = Number(product.price).toFixed(2);
+                                console.log(a-b);
+                                setTotal(Number(total).toFixed(2) - Number(product.price).toFixed(2));
                             }
                         }
                     }>
@@ -39,13 +42,17 @@ const CartProduct = ({
                     <button className="btn-table" onClick={
                         () => {
                             setCount(count + 1);
-                            setTotal(total + product.price);
+                            var a = Number(total).toFixed(2);
+                            var b = Number(product.price).toFixed(2);
+                            console.log(a+b);
+                            setTotal(Number(total).toFixed(2) + Number(product.price).toFixed(2));
                         }
                     }>
                         <p className="cart-text">+</p>
                     </button>
                 </div>
-                <p className="cart-text" style={{marginLeft:168}}>${product.price * count}</p>
+                <div></div>
+                <p className="cart-text" >${Number(product.price).toFixed(2) * count}</p>
                 <button className="btn-table" style={{marginTop:48, marginLeft:50}}>
                     <p className="cart-text">X</p>
                 </button>

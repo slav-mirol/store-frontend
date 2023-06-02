@@ -1,6 +1,6 @@
 .cart-product {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 20% 80%;
     width: 750px;
 }
 
@@ -42,6 +42,7 @@
 }
 
 .cart-info {
-    display: flex;
-
+    display: grid;
+    grid-template-columns: 25% 40% 10% 10% 10%;
+    justify-items: center;
 }

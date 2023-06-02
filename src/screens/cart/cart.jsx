@@ -7,10 +7,48 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import ProfileNavigation from '../../components/profile-navigation/profile-navigation';
 
+import axios from 'axios';
+
+const url = axios.create({
+    baseURL: 'http://127.0.0.1:8000/',
+});
+
+const config = {
+    headers: {
+      "Content-Type": "application/json",
+    }
+}
+
+const getProductsCart = (user) =>  {
+    let result =  url
+        .get("cart/get-cart/" + user["id"] + "?format=json")
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return result;
+};
 
 
 const Cart = ({user}) => {
   const [total, setTotal] = useState(0);
+  const [Products, setProducts] = useState([]);
+    
+    useEffect(() => {
+      async function fetchData() {
+        const response = await getProductsCart(user);
+        setProducts(response);
+        console.log(Products);
+        let startTotal = 0;
+        Products.map((elem)=>{startTotal += Number(elem.price)});
+        console.log(startTotal);
+        setTotal(startTotal.toFixed(2));
+      }
+
+      fetchData();
+    }, []);
     
   return (
     <div className="scr-cart">
@@ -28,7 +66,7 @@ const Cart = ({user}) => {
                     <p className='title-table' style={{marginRight:40}}> TOTAL </p>
                 </div>
                 <div className='line-table'/>
-                <CartProducts setTotal={setTotal} total={total} user={user}/>
+                <CartProducts products={Products} setTotal={setTotal} total={total} user={user}/>
                 <div className='line-table'/>
                 <div className='total-info'>
                     <div className='total-info-text'>
