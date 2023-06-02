@@ -9,7 +9,7 @@ const ProfileNavigation = ( {
         <div className='profile-navigation'>
               <Link to='/order'>
                   <button className='btn-navigation-u'>
-                  { (where == "profile" || where=="cart") ?
+                  { (where === "profile" || where==="cart") ?
                     <p className='txt-navigation'>
                         история заказов
                     </p> :

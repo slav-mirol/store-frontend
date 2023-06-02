@@ -45,7 +45,7 @@ const CartProduct = ({
                             var a = Number(total).toFixed(2);
                             var b = Number(product.price).toFixed(2);
                             console.log(a+b);
-                            setTotal(Number(total).toFixed(2) + Number(product.price).toFixed(2));
+                            setTotal(Number(total).toFixed(2) - (-1)*Number(product.price).toFixed(2));
                         }
                     }>
                         <p className="cart-text">+</p>

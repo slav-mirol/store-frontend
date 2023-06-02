@@ -32,13 +32,14 @@ const createCartStr = async (user, product) =>  {
 
 const getProductsCart = async (user) =>  {
     let result =  await url
-        .post("cart/get-cart?format=json", JSON.stringify({"id_user": user["id"]}),config)
+        .get("cart/get-cart/" + user["id"] + "?format=json")
         .then((response) => {
             return response.data;
         })
         .catch((error) => {
             return error;
         });
+        
     return result;
 };
 
@@ -47,13 +48,17 @@ class Product extends React.Component {
     super(props);
     this.state = {
       ...props,
-      added : false
+      added : false,
+      products: getProductsCart(this.props.location.state.user)
     }
   }
-  
-render() {
-  
-  console.log(this.state);
+  async getCart(user) {
+    const response = await getProductsCart(user);
+        this.setState({products:response});
+  }
+
+render()  {
+ console.log(this.state.products);
   return (
       <div className='product'>
           <Logo />
@@ -70,7 +75,8 @@ render() {
                       <p className='text-info-card'>{this.props.location.state.product.name}</p>
                       <p className='text-info-card'>{this.props.location.state.product.description}</p>
                       <p className='text-info-card'>{this.props.location.state.product.price}</p>
-                      {(this.props.location.state.user) && <button className='btn-add-cart' onClick={
+                      {(this.props.location.state.user) && 
+                      <button className='btn-add-cart' onClick={
                         ()=>{
                           createCartStr(this.props.location.state.user, this.props.location.state.product);
                           this.setState({...this.props, added: true})

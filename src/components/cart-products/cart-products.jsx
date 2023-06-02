@@ -11,6 +11,7 @@ const CartProducts = ({
     total, 
     user
 }) => {
+    console.log(products)
     return (
         <div className="cart-products">
         {products.map((elem)=>(

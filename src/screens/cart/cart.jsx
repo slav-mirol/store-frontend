@@ -19,8 +19,8 @@ const config = {
     }
 }
 
-const getProductsCart = (user) =>  {
-    let result =  url
+const getProductsCart = async (user) =>  {
+    let result = await url
         .get("cart/get-cart/" + user["id"] + "?format=json")
         .then((response) => {
             return response.data;
@@ -40,16 +40,30 @@ const Cart = ({user}) => {
       async function fetchData() {
         const response = await getProductsCart(user);
         setProducts(response);
-        console.log(Products);
-        let startTotal = 0;
-        Products.map((elem)=>{startTotal += Number(elem.price)});
-        console.log(startTotal);
-        setTotal(startTotal.toFixed(2));
       }
 
       fetchData();
     }, []);
-    
+    useEffect (
+        () => {
+            let startTotal = 0;
+            Products.map((elem)=>{startTotal += Number(elem.price)});
+            console.log(startTotal);
+            setTotal(startTotal.toFixed(2));
+        }, [Products]
+    )
+    async function createOrder(user) {
+        let result = await url
+        .post("orders/create-order", JSON.stringify({"id_user": user["id"], "adress":"samara"}), config)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        }).then(()=>{setProducts([])});
+        
+    }
+    console.log(Products)
   return (
     <div className="scr-cart">
         <Logo/>
@@ -66,7 +80,7 @@ const Cart = ({user}) => {
                     <p className='title-table' style={{marginRight:40}}> TOTAL </p>
                 </div>
                 <div className='line-table'/>
-                <CartProducts products={Products} setTotal={setTotal} total={total} user={user}/>
+                {(Products !== []) && <CartProducts products={Products} setTotal={setTotal} total={total} user={user}/>}
                 <div className='line-table'/>
                 <div className='total-info'>
                     <div className='total-info-text'>
@@ -75,7 +89,7 @@ const Cart = ({user}) => {
                     </div>
                     <div className='line-table' style={{width: 177, marginTop:11,marginBottom:0}}/>
                     <div style={{display:"flex",justifyContent:"flex-end"}}>
-                        <button className='btn-add-cart' style={{marginTop:34, height:26, width: 61}}>
+                        <button className='btn-add-cart' style={{marginTop:34, height:26, width: 61}} onClick={()=>{createOrder(user);}}>
                             <p className='btn-text-add-cart'>
                                 ORDER
                             </p>
