@@ -54,7 +54,7 @@ const Cart = ({user}) => {
     )
     async function createOrder(user) {
         let result = await url
-        .post("orders/create-order", JSON.stringify({"id_user": user["id"], "adress":"samara"}), config)
+        .post("orders/create-order", JSON.stringify({"id_user": user["id"], "adress": user["adress"], "total": total}), config)
         .then((response) => {
             return response.data;
         })

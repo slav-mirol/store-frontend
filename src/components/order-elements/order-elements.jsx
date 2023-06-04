@@ -6,13 +6,13 @@ import OrderElement from "../order-element/order-element";
 
 
 const OrderElements = ({
-    oreders,
+    orders,
     user
 }) => {
     return (
         <div className="cart-products">
-        {oreders.map((elem)=>(
-            <OrderElement key={elem.id} ord={elem}/>
+        {orders.map((elem)=>(
+            <OrderElement key={elem.id} ord={elem} user={user}/>
         ))}
         </div>
     )

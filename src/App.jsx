@@ -26,6 +26,9 @@ const App = () => {
   const WrappedProfile = function(props) {
     return (<Profile _profile={user} setUser={setUser}/>);
   };
+  const WrappedOrder = function(props) {
+    return (<Order user={user}/>);
+  };
 
   return (
       <Router>
@@ -35,7 +38,7 @@ const App = () => {
         <Route path="/registration" component={Registration} exact={true}/>
         <Route path="/product" component={Product} exact={true} />  
         <Route path="/profile" component={WrappedProfile} exact={true} />
-        <Route path="/order" component={Order} exact={true} />
+        <Route path="/order" component={WrappedOrder} exact={true} />
       </Router>    
   );
 }

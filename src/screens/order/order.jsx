@@ -6,6 +6,8 @@ import OrderElement from "../../components/order-element/order-element";
 import OrderElements from "../../components/order-elements/order-elements";
 
 import axios from 'axios';
+import { useEffect } from "react";
+import { useState } from "react";
 
 const url = axios.create({
     baseURL: 'http://127.0.0.1:8000/',
@@ -39,7 +41,7 @@ const Order = ({user}) => {
       }
 
       fetchData();
-    }, []);
+    },[]);
     return (
         <div className="scr-cart">
             <Logo/>
@@ -57,9 +59,6 @@ const Order = ({user}) => {
                     </div>
                     <div className='line-table'/>
                     <OrderElements orders={orders}/>
-                    <OrderElement ord={Orders[0]}/>
-                    <OrderElement ord={Orders[1]}/>
-                    <OrderElement ord={Orders[2]}/>
                     <div className='line-table'/>
                     
                     
