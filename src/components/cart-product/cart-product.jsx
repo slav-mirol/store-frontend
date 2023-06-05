@@ -6,7 +6,9 @@ const CartProduct = ({
     product,
     quantity,
     setTotal,
-    total
+    total,
+    user,
+    deleteProduct
 }) => {
     const [count,setCount] = useState(0);
     useEffect(() => {
@@ -53,7 +55,7 @@ const CartProduct = ({
                 </div>
                 <div></div>
                 <p className="cart-text" >${Number(product.price).toFixed(2) * count}</p>
-                <button className="btn-table" style={{marginTop:48, marginLeft:50}}>
+                <button className="btn-table" style={{marginTop:48, marginLeft:50}} onClick={() => {deleteProduct(user, product)}}>
                     <p className="cart-text">X</p>
                 </button>
             </div>

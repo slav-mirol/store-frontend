@@ -62,6 +62,20 @@ const Cart = ({user}) => {
         }).then(()=>{setProducts([])});
         
     }
+    async function deleteProduct(user, product) {
+        let result = await url
+        .post("orders/delete-cart", JSON.stringify({"id_user": user["id"], "id_product": product["id"]}), config)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        }).then(async () => {
+            setProducts(await getProductsCart(user))
+        });
+        
+    }
+
     console.log(Products)
   return (
     <div className="scr-cart">
@@ -79,7 +93,7 @@ const Cart = ({user}) => {
                     <p className='title-table' style={{marginRight:40}}> TOTAL </p>
                 </div>
                 <div className='line-table'/>
-                {(Products !== []) && <CartProducts products={Products} setTotal={setTotal} total={total} user={user}/>}
+                {(Products !== []) && <CartProducts products={Products} setTotal={setTotal} total={total} user={user} deleteProduct={deleteProduct}/>}
                 <div className='line-table'/>
                 <div className='total-info'>
                     <div className='total-info-text'>
