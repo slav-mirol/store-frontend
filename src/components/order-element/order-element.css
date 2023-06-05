@@ -9,7 +9,14 @@
 }
 
 .order-element {
+    display: grid;
+    grid-template-columns: 22% 25% 16% 23% 8% ;
+}
+
+.btn-order-status-changer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
+    background: transparent;
+    border: none;
 }
