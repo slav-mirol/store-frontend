@@ -10,6 +10,11 @@
 
 .order-element {
     display: grid;
+    grid-template-columns: 22% 39% 16% 25%;
+}
+
+.order-element-admin {
+    display: grid;
     grid-template-columns: 22% 25% 16% 23% 8% ;
 }
 

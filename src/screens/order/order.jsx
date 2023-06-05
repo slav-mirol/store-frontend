@@ -57,7 +57,7 @@ const Order = ({user}) => {
     return (
         <div className="scr-cart">
             <Logo />
-            <Navigation />
+            <Navigation user={user}/>
             <ProfileNavigation where='order'/>
             <p className='prom-text'> new arrivals </p>
             <p className='prom-text'> collection </p>

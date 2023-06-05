@@ -40,16 +40,14 @@ const OrderElement = ( {
             });
 
         setShow(false);
-        ord = result;
         setOrder(result);
     }
 
-    console.log(order);
     return (
         
         <div>
         { (user.is_staff === "True") ?
-            <div className="order-element">
+            <div className="order-element-admin">
                 <p className="order-info-text">{order.order.id_user}</p>
                 <p className="order-info-text">{order.order.date_joined}</p>
                 <p className="order-info-text">{order.order.id}</p>
