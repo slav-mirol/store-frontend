@@ -48,7 +48,6 @@ const Cart = ({user}) => {
         () => {
             let startTotal = 0;
             Products.map((elem)=>{startTotal += Number(elem.price)});
-            console.log(startTotal);
             setTotal(startTotal.toFixed(2));
         }, [Products]
     )
