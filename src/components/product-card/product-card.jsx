@@ -2,8 +2,6 @@ import React from 'react';
 import './product-card.css';
 import {Link} from "react-router-dom";
 import '../../assets/Inter-SemiBold.otf';
-import Products from '../array-products';
-import Product from '../../screens/product/product';
 
 class ProductCard extends React.Component {
     constructor(props) {
@@ -17,7 +15,7 @@ class ProductCard extends React.Component {
     }
   render() {
         return (
-        <div>
+        <div className="grid-item" >
         <Link to={{pathname: `/product`, state: {product: this.props.prod, user: this.props.user}}}>
             <div className='btn-product-card' style={{border:"none"}}>
                 <div className='img-container'>

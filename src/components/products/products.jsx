@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import ProductCard from '../product-card/product-card';
+import './products.css';
 
 import axios from 'axios';
 
@@ -37,13 +38,22 @@ const ProductsList = ({user}) => {
 
       fetchData();
     }, []);
-
+    let i = 0;
     console.log(Products);
     return (
-        <div className='list-products-black'>
-          { Products.map((elem)=>(
-            <ProductCard key={elem.id} prod={elem} bw='0' user={user} />
-          ))
+        <div className='list-products'>
+          { Products.map((elem, idx) => {
+            if (i<3) {
+              i += 1;
+              return <ProductCard  key={elem.id} prod={elem} bw='0' user={user} />
+            } else if (i<6) {
+              i += 1;
+              return <ProductCard  key={elem.id} prod={elem} bw='1' user={user} />
+            } else {
+              i = 0;
+              return <ProductCard  key={elem.id} prod={elem} bw='0' user={user} />
+            }
+          })
           }
         </div>
     );

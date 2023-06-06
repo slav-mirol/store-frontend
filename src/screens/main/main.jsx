@@ -16,25 +16,6 @@ const Main = ({user}) => {
           </header>
           <p className='text-header-main'> store </p>
           <ProductsList user={user}/>
-          
-          <div className='list-products-white'>
-            <ProductCard prod={Products[0]}
-                         bw='1'/>
-            <ProductCard prod={Products[1]}
-                         bw='1'/>
-            <ProductCard prod={Products[2]}
-                         bw='1'/>
-          </div>
-          <div className='list-products-black'>
-            <ProductCard prod={Products[3]}
-                         bw='0'/>
-            <ProductCard prod={Products[4]}
-                         bw='0'/>
-            <ProductCard prod={Products[5]}
-                         bw='0'/>
-          </div>
-
-
       </div>
     );
 }
