@@ -8,6 +8,7 @@ import OrderElements from "../../components/order-elements/order-elements";
 import axios from 'axios';
 import { useEffect } from "react";
 import { useState } from "react";
+import AddProduct from "../../components/add-product/add-product";
 
 const url = axios.create({
     baseURL: 'http://127.0.0.1:8000/',
@@ -45,6 +46,7 @@ const getOrders = async (user) =>  {
 
 const Order = ({user}) => {
     const [orders, setOrders] = useState([]);
+    const [isAdd, setAdd] = useState(false);
     
     useEffect(() => {
       async function fetchData() {
@@ -61,7 +63,7 @@ const Order = ({user}) => {
             <ProfileNavigation where='order'/>
             <p className='prom-text'> new arrivals </p>
             <p className='prom-text'> collection </p>
-            { (user.is_staff === "True") ?
+            { (user.is_staff === "True") ? (isAdd === false) ?
                 <div style={{display: "flex", justifyContent: "center"}}>
                     <div className='cart-table'>
                         <div className='head-table'>
@@ -75,7 +77,12 @@ const Order = ({user}) => {
                         <OrderElements orders={orders} user={user}/>
                         <div className='line-table'/>
                     </div>
+                    <button onClick={()=>{setAdd(true)}}>
+                        <p>Добавить новый продукт</p>
+                    </button>
                 </div>
+                :
+                <AddProduct />
             :
                 <div style={{display: "flex", justifyContent: "center"}}>
                     <div className='cart-table'>
