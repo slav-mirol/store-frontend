@@ -77,9 +77,9 @@ const Order = ({user}) => {
                         <OrderElements orders={orders} user={user}/>
                         <div className='line-table'/>
                     </div>
-                    <button onClick={()=>{setAdd(true)}}>
+                    {/* <button onClick={()=>{setAdd(true)}}>
                         <p>Добавить новый продукт</p>
-                    </button>
+                    </button> */}
                 </div>
                 :
                 <AddProduct />

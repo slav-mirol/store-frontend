@@ -25,12 +25,12 @@ class ProductCard extends React.Component {
                     {this.props.bw==='1' ?
                     <div className='info-product-card'>
                         <p className='text-info-card' style={{color:'black'}}>{this.props.prod.name}</p>
-                        <p className='text-info-card' style={{color:'black'}}>{this.props.prod.price}</p>
+                        <p className='text-info-card' style={{color:'black'}}>${this.props.prod.price}</p>
                     </div>
                     :
                     <div className='info-product-card'>
                         <p className='text-info-card'>{this.props.prod.name}</p>
-                        <p className='text-info-card'>{this.props.prod.price}</p>
+                        <p className='text-info-card'>${this.props.prod.price}</p>
                     </div>
                     }
                 </div>

@@ -50,7 +50,7 @@ class Product extends React.Component {
     console.log(response);
     this.state = {
       ...props,
-      added :  true,
+      added : false,
     }
   }
 
@@ -71,7 +71,7 @@ render()  {
                       <p className='text-info-card'>{this.props.location.state.product.name}</p>
                       <p className='text-info-card'>{this.props.location.state.product.description}</p>
                       <p className='text-info-card'>{this.props.location.state.product.price}</p>
-                      {(this.props.location.state.user) && 
+                      {(this.props.location.state.user) && (this.state.added === false) &&
                       <button className='btn-add-cart' onClick={
                         ()=>{
                           createCartStr(this.props.location.state.user, this.props.location.state.product);
@@ -83,7 +83,7 @@ render()  {
                         </p>
                       </button>
                       }
-                      {(this.state.added === true) && <p style={{color:"white"}}>Вы добавили этот товар в корзину</p>}
+                      {(this.props.location.state.user) && (this.state.added === true) && <p style={{color:"white"}}>Вы добавили этот товар в корзину</p>}
                   </div>
               </div>
               
